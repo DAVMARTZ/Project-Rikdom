@@ -43,5 +43,5 @@ public class UsuarioController {
 		List<Usuario> listUsuario = service.addUser(usuario);
 		return new ResponseEntity<List<Usuario>>(listUsuario, HttpStatus.CREATED);
 	}
-
+//Hola
 }
