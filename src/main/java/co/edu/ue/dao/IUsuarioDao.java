@@ -7,7 +7,7 @@ import co.edu.ue.entity.Usuario;
 public interface IUsuarioDao {
 	//Declaracion
 	List<Usuario> GuardarUser(Usuario usuario);
-	Usuario ActualizarDato(Usuario usuario);
+	Usuario ActualizarUser(Usuario usuario);
 	//Consulta
 	List<Usuario> listaCompleta();
 	Usuario BuscarID(int id);

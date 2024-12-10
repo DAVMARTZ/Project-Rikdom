@@ -21,7 +21,7 @@ public class UsuarioDao implements IUsuarioDao {
 	}
 
 	@Override
-	public Usuario ActualizarDato(Usuario usuario) {
+	public Usuario ActualizarUser(Usuario usuario) {
 		return jpa.save(usuario);
 	}
 

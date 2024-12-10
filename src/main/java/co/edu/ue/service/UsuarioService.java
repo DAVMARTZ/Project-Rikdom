@@ -22,8 +22,11 @@ public class UsuarioService implements IUsuarioService{
 
 	@Override
 	public Usuario UpdateDato(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return dao.ActualizarDato(usuario);
+		int usuId = usuario.getUsuId();
+		if(FindID(usuId).equals(null)) {
+			return dao.ActualizarUser(usuario);
+		}
+		return null;
 	}
 
 	@Override
