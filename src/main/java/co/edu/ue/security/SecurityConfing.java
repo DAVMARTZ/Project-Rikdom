@@ -32,15 +32,16 @@ public class SecurityConfing {
 		return new InMemoryUserDetailsManager(users);
 	}
 	
+	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http.csrf(cus->cus.disable())
 		.authorizeHttpRequests(aut->
-			aut.requestMatchers(HttpMethod.POST,"/User-sav").hasAnyRole("ADMINS")
+			aut.requestMatchers(HttpMethod.POST, "/User-sav").hasAnyRole("ADMINS")
 			//.requestMatchers(HttpMethod.DELETE,"/datos/**").hasAnyRole("ADMINS","OTHER")
-			.requestMatchers(HttpMethod.GET,"/User-all").authenticated()
-			.requestMatchers(HttpMethod.GET,"/User_id").hasAnyRole("USERS")	
-			.requestMatchers(HttpMethod.GET,"/User_Email").hasAnyRole("USERS","ADMINS")
-			.requestMatchers(HttpMethod.PUT,"/User-up").hasAnyRole("ADMINS")
+			.requestMatchers(HttpMethod.GET, "/User-all").authenticated()
+			.requestMatchers(HttpMethod.GET, "/User_id").hasAnyRole("USERS")	
+			.requestMatchers(HttpMethod.GET, "/User_Email").hasAnyRole("USERS","ADMINS")
+			.requestMatchers(HttpMethod.PUT, "/User-up").hasAnyRole("ADMINS")
 			)
 		.httpBasic(Customizer.withDefaults());
 		return http.build();

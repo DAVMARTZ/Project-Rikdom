@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import co.edu.ue.entity.Usuario;
-import co.edu.ue.jpa.IUsuarioJPA;
+import co.edu.ue.jpa.IUsuarioJpa;
 
 @Repository
 public class UsuarioDao implements IUsuarioDao {
 
 	@Autowired
-	IUsuarioJPA jpa;
+	IUsuarioJpa jpa;
 	
 	@Override
 	public List<Usuario> GuardarUser(Usuario usuario) {
@@ -21,7 +21,7 @@ public class UsuarioDao implements IUsuarioDao {
 	}
 
 	@Override
-	public Usuario ActualizarUser(Usuario usuario) {
+	public Usuario ActualizarDato(Usuario usuario) {
 		return jpa.save(usuario);
 	}
 

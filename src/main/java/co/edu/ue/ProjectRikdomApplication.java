@@ -10,7 +10,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EntityScan(basePackages = {"co.edu.ue.entity"})
 @EnableJpaRepositories(basePackages = {"co.edu.ue.jpa"})
 @ComponentScan(basePackages = {"co.edu.ue.controller","co.edu.ue.service","co.edu.ue.dao",
-"co.edu.ue.service"})
+"co.edu.ue.service", "co.edu.ue.security"})
 public class ProjectRikdomApplication {
 
 	public static void main(String[] args) {

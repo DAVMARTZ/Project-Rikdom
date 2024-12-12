@@ -1,50 +1,42 @@
 package co.edu.ue.service;
 
-import java.util.List;
-
+import co.edu.ue.entity.Usuario;
+import co.edu.ue.jpa.IUsuarioJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.edu.ue.dao.IUsuarioDao;
-import co.edu.ue.entity.Usuario;
+import java.util.List;
+import java.util.Optional;
+import co.edu.ue.jpa.IUsuarioJpa;
 
 @Service
-public class UsuarioService implements IUsuarioService{
+public class UsuarioService implements IUsuarioService {
 
-	@Autowired
-	IUsuarioDao dao;
-	
-	@Override
-	public List<Usuario> addUser(Usuario usuario) {
-		// TODO Auto-generated method stub
-		return dao.GuardarUser(usuario);
-	}
+    private final IUsuarioJpa usuarioJpa;
 
-	@Override
-	public Usuario UpdateDato(Usuario usuario) {
-		int usuId = usuario.getUsuId();
-		if(FindID(usuId).equals(null)) {
-			return dao.ActualizarUser(usuario);
-		}
-		return null;
-	}
+    @Autowired
+    public UsuarioService(IUsuarioJpa usuarioJpa) {
+        this.usuarioJpa = usuarioJpa;
+    }
 
-	@Override
-	public List<Usuario> listAll() {
-		// TODO Auto-generated method stub
-		return dao.listaCompleta();
-	}
+    @Override
+    public Usuario save(Usuario usuario) {
+        return usuarioJpa.save(usuario);
+    }
 
-	@Override
-	public Usuario FindID(int id) {
-		// TODO Auto-generated method stub
-		return dao.BuscarID(id);
-	}
+    @Override
+    public Usuario findById(Long id) {
+        Optional<Usuario> usuario = usuarioJpa.findById(id);
+        return usuario.orElse(null); // Retorna null si no encuentra el usuario
+    }
 
-	@Override
-	public Usuario FindEmail(String Correo) {
-		// TODO Auto-generated method stub
-		return dao.BuscarEmail(Correo);
-	}
+    @Override
+    public List<Usuario> findAll() {
+        return usuarioJpa.findAll();
+    }
 
+    @Override
+    public void deleteById(Long id) {
+        usuarioJpa.deleteById(id);
+    }
 }
